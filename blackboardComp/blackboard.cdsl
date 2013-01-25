@@ -1,0 +1,13 @@
+import "/robocomp/Interfaces/IDSLs/Camera.idsl";
+
+Component blackboardComp{
+	Communications{
+		requires Camera;
+	};
+	
+	RoboCompModules{
+		artoolkit;
+	};
+	language Cpp;
+	gui Qt;	
+};

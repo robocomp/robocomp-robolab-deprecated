@@ -1,0 +1,9 @@
+# Debug config file
+
+#
+# This property is used to configure the endpoints of the subscriber adapter.
+#
+SpeakerComp.Endpoints=tcp -p 10180
+CommonBehavior.Endpoints=tcp -p # Remote servers proxies example
+#RemoteProxy = remote:tcp -h remotehost -p 10001
+SpeakerProxy = speaker:tcp -h localhost -p 10180

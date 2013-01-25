@@ -1,0 +1,18 @@
+
+# Sources set
+SET ( SOURCES
+  specificworker.cpp
+  specificmonitor.cpp
+  gl.cpp
+  $ENV{ROBOCOMP}/Classes/qvision/qvision.cpp
+  $ENV{ROBOCOMP}/Classes/qvision/rgl.cpp
+)
+
+# Headers set
+SET ( HEADERS
+  specificworker.h
+  specificmonitor.h
+  gl.h
+  $ENV{ROBOCOMP}/Classes/qvision/qvision.h
+  $ENV{ROBOCOMP}/Classes/qvision/rgl.h
+)

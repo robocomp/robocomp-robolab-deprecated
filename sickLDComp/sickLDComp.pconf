@@ -1,0 +1,10 @@
+import "sickLDComp.pdsl";
+ConfigFile sickLDComp{
+	device = "192.168.187.204"
+	startValue = 0
+    angleRes = 1
+	endValue = 180
+	sampleRate = 100
+	skipValue = 1
+	talkToBase = true
+}

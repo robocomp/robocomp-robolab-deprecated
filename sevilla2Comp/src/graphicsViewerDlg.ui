@@ -1,0 +1,3935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>graphicsWindow</class>
+ <widget class="QWidget" name="graphicsWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>920</width>
+    <height>530</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>920</width>
+    <height>530</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Visor de gráficas</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>67</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Abrir ...</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="openButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>20</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>20</y>
+     <width>211</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Mostrar</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QwtPlot" name="plot">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>70</y>
+     <width>641</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+  </widget>
+  <widget class="QScrollArea" name="scroll">
+   <property name="geometry">
+    <rect>
+     <x>690</x>
+     <y>70</y>
+     <width>211</width>
+     <height>408</height>
+    </rect>
+   </property>
+   <property name="widgetResizable">
+    <bool>true</bool>
+   </property>
+   <widget class="QWidget" name="scrollAreaWidgetContents_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>193</width>
+      <height>1889</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QGroupBox" name="waistBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Waist</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout">
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="waistrz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="waistry">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="waistrx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_10">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QComboBox" name="colorWaistx">
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorWaisty">
+           <property name="currentIndex">
+            <number>2</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorWaistz">
+           <property name="currentIndex">
+            <number>3</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="torsoBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Torso</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="torsorx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="torsory">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="torsorz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QComboBox" name="colorTorsox">
+           <property name="currentIndex">
+            <number>4</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorTorsoy">
+           <property name="currentIndex">
+            <number>5</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorTorsoz">
+           <property name="currentIndex">
+            <number>6</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="rightshoulderBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Right Shoulder</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="rshoulderx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="rshouldery">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="rshoulderz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_5">
+         <item>
+          <widget class="QComboBox" name="colorRShoulderx">
+           <property name="currentIndex">
+            <number>7</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorRShouldery">
+           <property name="currentIndex">
+            <number>8</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorRShoulderz">
+           <property name="currentIndex">
+            <number>10</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="leftshoulderBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Left Shoulder</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_11">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="lshoulderx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="lshouldery">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="lshoulderz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <widget class="QComboBox" name="colorLShoulderx">
+           <property name="currentIndex">
+            <number>9</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorLShouldery">
+           <property name="currentIndex">
+            <number>11</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorLShoulderz">
+           <property name="currentIndex">
+            <number>12</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="rightkneeBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Right Knee</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="rkneerx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="rkneery">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="rkneerz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_7">
+         <item>
+          <widget class="QComboBox" name="colorRKneex">
+           <property name="currentIndex">
+            <number>13</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorRKneey">
+           <property name="currentIndex">
+            <number>14</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorRKneez">
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="leftkneeBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Left Knee</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="lkneerx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="lkneery">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="lkneerz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <widget class="QComboBox" name="colorLKneex">
+           <property name="currentIndex">
+            <number>15</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorLKneey">
+           <property name="currentIndex">
+            <number>2</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorLKneez">
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="righthipBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Right Hip</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="righthiprx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="righthipry">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="righthiprz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
+          <widget class="QComboBox" name="colorRHipx">
+           <property name="currentIndex">
+            <number>2</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorRHipy">
+           <property name="currentIndex">
+            <number>3</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorRHipz">
+           <property name="currentIndex">
+            <number>4</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="lefthipBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Left Hip</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="lefthiprx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="lefthipry">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="lefthiprz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <item>
+          <widget class="QComboBox" name="colorLHipx">
+           <property name="currentIndex">
+            <number>5</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorLHipy">
+           <property name="currentIndex">
+            <number>6</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorLHipz">
+           <property name="currentIndex">
+            <number>9</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="rightelbowBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Right Elbow</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_8">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="rightelbowrx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="rightelbowry">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="rightelbowrz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_11">
+         <item>
+          <widget class="QComboBox" name="colorRElbowx">
+           <property name="currentIndex">
+            <number>8</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorRElbowy">
+           <property name="currentIndex">
+            <number>7</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorRElbowz">
+           <property name="currentIndex">
+            <number>10</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="leftelbowBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Left Elbow</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_9">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="leftelbowrx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="leftelbowry">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="leftelbowrz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_12">
+         <item>
+          <widget class="QComboBox" name="colorLElbowx">
+           <property name="currentIndex">
+            <number>11</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorLElbowy">
+           <property name="currentIndex">
+            <number>12</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorLElbowz">
+           <property name="currentIndex">
+            <number>14</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="neckBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="title">
+          <string>Neck</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_10">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="neckrx">
+            <property name="text">
+             <string>rx</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="neckry">
+            <property name="text">
+             <string>ry</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="neckrz">
+            <property name="text">
+             <string>rz</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_13">
+         <item>
+          <widget class="QComboBox" name="colorNeckx">
+           <property name="currentIndex">
+            <number>13</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorNecky">
+           <property name="currentIndex">
+            <number>2</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="colorNeckz">
+           <property name="currentIndex">
+            <number>15</number>
+           </property>
+           <property name="maxVisibleItems">
+            <number>20</number>
+           </property>
+           <item>
+            <property name="text">
+             <string>white</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>black</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark red</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark green</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark cyan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark magenta</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark yellow</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>dark gray</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>light gray</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pintarButton">
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>490</y>
+     <width>97</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Pintar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="periodLabel">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>500</y>
+     <width>251</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>Periodo(ms):</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="patientLabel">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>10</y>
+     <width>471</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Paciente:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>130</y>
+     <width>16</width>
+     <height>231</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>A
+m
+p
+l
+i
+t
+u
+d
+ 
+(º)</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dateLabel">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>500</y>
+     <width>231</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Fecha:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="responsibleLabel">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>40</y>
+     <width>471</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Responsable:</string>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QwtPlot</class>
+   <extends>QFrame</extends>
+   <header>qwt_plot.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

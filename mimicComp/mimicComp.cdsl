@@ -1,0 +1,14 @@
+import "/robocomp/Interfaces/IDSLs/Trackeropenni.idsl";
+import "/robocomp/Interfaces/IDSLs/JointMotor.idsl";
+import "/robocomp/Interfaces/IDSLs/EvaluadorOff.idsl";
+import "/robocomp/Interfaces/IDSLs/Mimic.idsl";
+
+Component mimicComp{
+	Communications{
+		requires Trackeropenni, JointMotor,EvaluadorOff;
+		implements Mimic;
+	};
+	
+	worker isThread;
+	language Cpp;	
+};

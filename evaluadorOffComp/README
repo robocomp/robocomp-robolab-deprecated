@@ -1,0 +1,3 @@
+this component need:
+sudo aptitude install kdelibs5-dev
+sudo aptitude install libqwt5-qt4

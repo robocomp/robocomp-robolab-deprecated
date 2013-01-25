@@ -1,0 +1,8 @@
+import "../IDSLs/SendTopic.idsl";
+
+Component stormServerComp{
+	Communications{
+		publishes SendTopic;
+	};
+	language Cpp;
+};

@@ -1,0 +1,20 @@
+
+# Sources set
+SET ( SOURCES
+  rosadapter.cpp
+  specificworker.cpp
+  specificmonitor.cpp
+)
+
+# Headers set
+SET ( HEADERS
+  rosadapter.h
+  specificworker.h
+  specificmonitor.h
+)
+
+#Include for Joystick messages (Joy.h)
+include_directories($ENV{ROSROOT}/stacks/joystick_drivers/joy/msg_gen/cpp/include/)
+include_directories($ENV{ROSROOT}/stacks/common_msgs/sensor_msgs/msg_gen/cpp/include/)
+include_directories($ENV{ROSROOT}/stacks/ros_comm/messages/std_msgs/msg_gen/cpp/include/)
+include_directories($ENV{ROSROOT}/stacks/ros_comm/messages/std_msgs/include/)

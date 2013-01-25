@@ -1,0 +1,30 @@
+#
+# This property is used to configure the endpoints of the subscriber adapter.
+#
+dialogManagerComp.Endpoints=tcp -p 10156
+CommonBehavior.Endpoints=tcp -p 11156
+# Remote servers proxies example
+#RemoteProxy = remote:tcp -h remotehost -p 10001
+SpeechProxy = speech:tcp -h localhost -p 10021
+TrackerProxy = tracker:tcp -h rumano.local -p 10009
+GestureProxy = gesture:tcp -h localhost -p 10152
+ASRProxy = asr:tcp -h localhost -p 10155
+FaceDetectorProxy = facedetector:tcp -h rumano.local -p 10153
+JointMotorProxy = jointmotor:tcp -h pulguita.local -p 12067 #cejas
+	
+# User config parameters
+# Example = value
+
+#############################
+### Ice-related properties ##
+#############################
+# Warn about connection exceptions
+Ice.Warn.Connections=0
+# Network Tracing: (0: no network tracing; 1: trace connection establishment and closure; 2: like 1, but more detailed; 3: like 2, but also trace data transfer).
+Ice.Trace.Network=0
+# Protocol Tracing: (0: no protocol tracing; 1: trace protocol messages)
+Ice.Trace.Protocol=0
+
+# Faster ACM
+Ice.ACM.Client=10
+Ice.ACM.Server=10

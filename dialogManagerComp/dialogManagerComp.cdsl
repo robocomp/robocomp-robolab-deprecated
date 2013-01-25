@@ -1,0 +1,28 @@
+import "../IDSLs/DialogManager.idsl";
+import "../IDSLs/Speech.idsl";
+import "../IDSLs/Tracker.idsl";
+import "../IDSLs/Gesture.idsl";
+import "../IDSLs/asr.idsl";
+import "../IDSLs/faceDetector.idsl";
+import "../IDSLs/JointMotor.idsl";
+
+Component dialogManagerComp{
+	Communications{
+		implements DialogManager;
+		requires Speech, Tracker, Gesture,ASR,FaceDetector,JointMotor;
+		
+	};
+	RoboCompClasses{
+		"/Classes/qstatemachinewidget/qstateMachineWrapper.cpp";
+		"/Classes/qstatemachinewidget/qstateMachineWrapper.h";
+		"/Classes/qstatemachinewidget/graphwidget.cpp";
+		"/Classes/qstatemachinewidget/graphwidget.h";
+		"/Classes/qstatemachinewidget/node.cpp";
+		"/Classes/qstatemachinewidget/node.h";
+		"/Classes/qstatemachinewidget/edge.cpp";
+		"/Classes/qstatemachinewidget/edge.h";
+
+	};
+	language Cpp;
+	gui Qt;
+};

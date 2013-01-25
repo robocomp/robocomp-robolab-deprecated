@@ -1,0 +1,17 @@
+
+# Sources set
+SET ( SOURCES
+  specificworker.cpp
+  specificmonitor.cpp
+  sesiondata.cpp
+)
+
+# Headers set
+SET ( HEADERS
+  specificworker.h
+  specificmonitor.h
+  sesiondata.h
+)
+
+INCLUDE_DIRECTORIES( /usr/include/qwt-qt4)
+SET(LIBS ${LIBS} -lphonon -lqwt-qt4)

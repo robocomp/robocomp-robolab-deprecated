@@ -1,0 +1,9 @@
+ComponentParams sickLDComp{
+	device string "" T;
+	startValue int 169 0:1000 T;
+	angleRes float 1 0:10 T;
+	endValue int 768 0:1000 T;
+	sampleRate int 100 30:2000 T;
+	skipValue int 1 0:10 T;
+	talkToBase bool true T;
+};

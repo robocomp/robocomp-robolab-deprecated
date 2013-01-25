@@ -1,0 +1,13 @@
+import "/robocomp/Interfaces/IDSLs/Speaker.idsl";
+
+Component rosBridgeComp{
+	Communications{
+		requires Speaker;
+	};
+	
+	RoboCompModules{
+		ros;
+	};
+	language Cpp;	
+	worker isThread;
+};

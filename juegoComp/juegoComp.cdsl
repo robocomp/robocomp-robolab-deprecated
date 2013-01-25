@@ -1,0 +1,51 @@
+import "/robocomp/Interfaces/IDSLs/Juego.idsl";
+import "/robocomp/Interfaces/IDSLs/Trackeropenni.idsl";
+import "/robocomp/Interfaces/IDSLs/EvaluadorOff.idsl";
+import "/robocomp/Interfaces/IDSLs/Speech.idsl";
+import "/robocomp/Interfaces/IDSLs/UrsusArm.idsl";
+import "/robocomp/Interfaces/IDSLs/Speechgenerator.idsl";
+
+
+Component juegoComp { //importante poner el nombre del proyecto+Comp
+	Communications{
+		requires Trackeropenni, EvaluadorOff, Speech,UrsusArm, Speechgenerator;
+		implements Juego;
+	};
+	 gui Qt;
+	//worker isThread; // isThread o 
+	stateMachine "fichero.scxml"; //maquina de estados (ahora no hace nada)
+	RoboCompClasses
+		
+	{ 
+		//aqui se añaden las clases seleccionadas en la vista "Classes" ehemplo: "/Classes/c2vector/c2vector.h”;		
+	  "/Classes/rcdraw/rcdraw.h";   
+	
+	  "/Classes/osgviewer/osgview.h";
+	  "/Classes/osgviewer/findnamednode.h";
+	  "/Classes/osgviewer/getworldcoorofnode.h";
+	  "/Classes/osgviewer/viewerqt.h";
+	  "/Classes/osgviewer/adapterwidget.h"; 
+	  
+	  "/Classes/innermodel/innermodel.h";
+	  "/Classes/innermodel/innermodelreader.h";
+	  
+	  "/Classes/rcdraw/rcdraw.cpp";   
+	
+	  "/Classes/osgviewer/osgview.cpp";
+	  "/Classes/osgviewer/findnamednode.cpp";
+	  "/Classes/osgviewer/getworldcoorofnode.cpp";
+	  "/Classes/osgviewer/viewerqt.cpp";
+	  "/Classes/osgviewer/adapterwidget.cpp"; 
+	  
+	  "/Classes/innermodel/innermodel.cpp";
+	  "/Classes/innermodel/innermodelreader.cpp";
+	};
+	RoboCompModules{
+		 IPP;
+		 openni;
+		 opensg;
+		// OpenCV;
+		//ver la lista en documentación Dropbox
+	};
+	language Cpp;
+};

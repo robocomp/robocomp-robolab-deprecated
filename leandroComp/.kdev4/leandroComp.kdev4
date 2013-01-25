@@ -1,0 +1,37 @@
+[Buildset]
+BuildItems=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x01\x00\x00\x00\x0b\x00\x00\x00\x00\x01\x00\x00\x00\x16\x00l\x00e\x00a\x00n\x00d\x00r\x00o\x00C\x00o\x00m\x00p)
+
+[CMake]
+BuildDirs=/home/salabeta/robocomp/Components/RoboLab/Experimental/leandroComp/
+CMakeDir=/usr/share/cmake-2.8/Modules
+Current CMake Binary=file:///usr/bin/cmake
+CurrentBuildDir=file:///home/salabeta/robocomp/Components/RoboLab/Experimental/leandroComp/
+CurrentBuildType=
+CurrentInstallDir=file:///usr/local
+ProjectRootRelative=./
+
+[Launch]
+Launch Configurations=Launch Configuration 0
+
+[Launch][Launch Configuration 0]
+Configured Launch Modes=execute
+Configured Launchers=nativeAppLauncher
+Name=Nueva configuración Aplicación nativa
+Type=Native Application
+
+[Launch][Launch Configuration 0][Data]
+Arguments=--Ice.Config="../etc/config"
+Dependencies=@Variant(\x00\x00\x00\t\x00\x00\x00\x00\x00)
+Dependency Action=Nothing
+EnvironmentGroup=default
+Executable=file:///home/salabeta/robocomp/Components/RoboLab/Experimental/leandroComp/bin/leandroComp
+External Terminal=konsole --noclose --workdir %workdir -e %exe
+Use External Terminal=false
+Working Directory=file:///home/salabeta/robocomp/Components/RoboLab/Experimental/leandroComp/bin
+isExecutable=true
+
+[MakeBuilder]
+Number Of Jobs=7
+
+[Project]
+VersionControlSupport=kdevsubversion

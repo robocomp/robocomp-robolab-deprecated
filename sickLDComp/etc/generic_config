@@ -1,0 +1,9 @@
+#
+# This property is used to configure the endpoints of the subscriber adapter.
+#
+LaserComp.Endpoints=tcp -p 10003
+CommonBehavior.Endpoints=tcp -p 11004
+
+# Remote servers proxies example
+#RemoteProxy = remote:tcp -h remotehost -p 10001
+DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 10004

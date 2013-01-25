@@ -1,0 +1,491 @@
+// -*- C++ -*-
+#ifndef DISTCELDAS_TCPP
+#define DISTCELDAS_H
+
+#include "libceldas.h"
+#include "distceldas.h"
+#include <vector>
+#include <iostream>
+#include <iterator>
+#include <algorithm>
+
+//#define DEBUGDISTCELDAS 
+
+#ifdef DEBUGDISTCELDAS 
+  #include <list>
+#endif
+
+using namespace std;
+
+
+
+// Tipo de las coordenadas del nodo
+struct coordenadas_t {
+  coordenadas_t() : j(-1), i(-1) {}
+  coordenadas_t(int _j, int _i) : j(_j), i(_i) {}
+  int j,i;
+};
+
+// Tipo del nodo del trellis
+struct nodo_t {
+  
+  nodo_t(coordenadas_t _coord, double _coste, double _peso_acumulado)
+    : coord(_coord), coste(_coste), peso_acumulado(_peso_acumulado)
+  {}
+  coordenadas_t coord;
+  double coste;
+  double peso_acumulado;
+};
+
+inline ostream& operator << (ostream& o, const coordenadas_t& coord)
+{
+  o << "(" << coord.j << "," << coord.i << ")";
+  return o;
+}
+
+inline nodo_t min(nodo_t nodo1, nodo_t nodo2, nodo_t nodo3)
+{
+  nodo_t minimo = nodo1;
+  if(nodo2.coste < minimo.coste) {
+    minimo = nodo2;
+  }
+  if (nodo3.coste < minimo.coste) {
+    minimo = nodo3;
+  }
+  return minimo;
+}
+
+inline nodo_t min(nodo_t nodo1, nodo_t nodo2)
+{
+  nodo_t minimo = nodo1;
+  if(nodo2.coste < minimo.coste) {
+    minimo = nodo2;
+  }
+  return minimo;
+}
+
+// Funcion auxiliar para el backtrack
+inline int pendiente(const coordenadas_t& coord1,
+		     const coordenadas_t& coord2)
+{
+  if ((coord1.j != coord2.j) && (coord1.i == coord2.i)) return 0;      // vertical
+  else if ((coord1.j == coord2.j) && (coord1.i != coord2.i)) return 1; // horizontal
+  else if ((coord1.j != coord2.j) && (coord1.i != coord2.i)) return 2; // diagonal
+  else return 3;
+}
+
+
+
+// Calcula la distancia minima entre dos secuencias a base de deformar
+// (warp) los ejes de tiempo de ambas.
+//
+// Ver artículo: Hiroaki Sakoe, Seibi Chiba; "Dynamic Programming Algorithm 
+//               Optimization for Spoken Word Recognition". IEEE Transactions
+//               on Acoustics 
+// Objeto: Puede ser una CELDA, un par de CELDAS, etc.
+// Distancia: Tipo de la clasecilla que se usa para obtener las distancias
+// patron: lo que su nombre indica.
+// secuencia: lo que su nombre indica.
+// tipo: distancia simetrica o asimetrica.
+// dist: Objeto que se usa para calcular distancias
+// ventana: maxima deformacion que se permite tanto del eje de tiempos
+//          del patron como del eje de tiempos de la secuencia a la hora
+//          de compararlos.
+template<typename Objeto,
+	 typename Distancia>
+double DistanciaSecuencias(const std::vector<Objeto>& patron,
+			   const std::vector<Objeto>& secuencia,
+			   double peso_horizontal,
+			   double peso_vertical,
+			   double peso_diagonal,
+			   Distancia& distancia,
+			   int ventana)
+{
+ 
+  /// Reservar memoria para la matriz de costes y para la matriz de pesos 
+
+  std::vector<std::vector<double> > coste;
+  std::vector<std::vector<double> > peso;
+  std::vector<std::vector<coordenadas_t> > predecesor;
+
+  // Ojo. Respetamos el convenio del artículo que utiliza el indice i
+  // para las columnas y el indice j para las filas. Es decir,
+  // C(i,j) = C[j][i]
+
+  // filas
+
+  int J = patron.size(); 
+  coste.resize(J);
+  peso.resize(J);
+  predecesor.resize(J);
+
+  // columnas
+
+  int I = secuencia.size();
+  for (int j=0; j<J; j++) 
+      coste[j].resize(I);
+  for (int j=0; j<J; j++) 
+      peso[j].resize(I);
+  for (int j=0; j<J; j++) 
+      predecesor[j].resize(I);
+
+
+  // Comprobar si la ventana es la mínima admisible
+  int ventana_minima = std::max(I,J) - std::min(I,J);
+  if (ventana < ventana_minima) ventana = ventana_minima;
+
+
+  // Inicializar
+
+  //  coste[0][0] = peso_diagonal * m.distanciaEntreCeldas(patron[0],secuencia[0]);
+  coste[0][0] = peso_diagonal * distancia(patron[0], secuencia[0]);
+  peso[0][0]  = peso_diagonal;
+  predecesor[0][0].i = -1;
+  predecesor[0][0].j = -1;
+  
+  // Recursion
+
+  int i = 0;
+  int j = 0;
+  nodo_t minimo(coordenadas_t(-1,-1),-1.0, -1.0);
+  double dist = 0.0;
+  double costefinal = 0.0;
+  while(1) {
+    i++;
+    if (i > j + ventana) {
+      j++;
+      if (j >= J) {
+
+	// Calcular coste final
+	costefinal = coste[J-1][I-1] / peso[J-1][I-1];
+	//cout << "costefinal = " << coste[J-1][I-1] << "/"  << peso[J-1][I-1] << endl;
+
+	break;
+      }
+      else {
+	i = j - ventana - 1;
+      }
+    }
+    else {
+      if (i<0) continue;
+      if (i>=I) continue;
+
+      // Calcular coste C(i,j) y peso(i,j). 
+      //dist = m.distanciaEntreCeldas(patron[j], secuencia[i]);
+      dist = distancia(patron[j], secuencia[i]);
+
+      // Fila de más abajo del trellis
+      if (j == 0) {
+	minimo.coste = coste[j][i-1] + peso_horizontal * dist;
+	minimo.peso_acumulado = peso_horizontal + peso[j][i-1];
+	minimo.coord.j = j;
+	minimo.coord.i = i-1;
+      }
+      // Columna de más a la izquierda del trellis
+      else if (i == 0) {
+	minimo.coste = coste[j-1][i] + peso_vertical * dist;
+	minimo.peso_acumulado = peso_vertical + peso[j-1][i];
+	minimo.coord.j = j-1;
+	minimo.coord.i = i;
+      }
+      // Diagonal izquierda del trellis
+      else if (i == j - ventana) {
+	minimo = min(nodo_t(coordenadas_t(j-1, i),   coste[j-1][i]   + peso_vertical   * dist, peso_vertical + peso[j-1][i]),
+		       nodo_t(coordenadas_t(j-1, i-1), coste[j-1][i-1] + peso_diagonal   * dist, peso_diagonal + peso[j-1][i-1])); 
+
+      }
+      // Diagonal derecha del trellis
+      else if (i == j + ventana) {
+	minimo = min(nodo_t(coordenadas_t(j-1, i-1), coste[j-1][i-1] + peso_diagonal   * dist, peso_diagonal + peso[j-1][i-1]),
+		     nodo_t(coordenadas_t(j, i-1),   coste[j][i-1]   + peso_horizontal * dist, peso_horizontal + peso[j][i-1]));
+	
+      }
+      // Resto del trellis
+      else {
+	minimo = min(nodo_t(coordenadas_t(j-1, i),   coste[j-1][i]   + peso_vertical   * dist, peso_vertical + peso[j-1][i]),
+		       nodo_t(coordenadas_t(j-1, i-1), coste[j-1][i-1] + peso_diagonal   * dist, peso_diagonal + peso[j-1][i-1]),
+		       nodo_t(coordenadas_t(j, i-1),   coste[j][i-1]   + peso_horizontal * dist, peso_horizontal + peso[j][i-1]));
+
+      }
+      coste[j][i] = minimo.coste;
+      peso[j][i] =  minimo.peso_acumulado ;
+      predecesor[j][i] = minimo.coord;
+    }
+  }
+  
+#ifdef DEBUGDISTCELDAS 
+		    // Backtrack
+		    // lista global de nodos recorridos.
+		    list<coordenadas_t> camino_recorrido;
+		    j = J-1; 
+		    i = I-1;
+		    int itemp, jtemp;
+		    int tamanio_camino = 0;
+		    while(i>=0 && j>=0) {
+		      camino_recorrido.push_front(coordenadas_t(j,i));
+		      jtemp = predecesor[j][i].j;
+		      itemp = predecesor[j][i].i;
+		      j = jtemp;
+		      i = itemp;
+		      tamanio_camino++;
+		    } 
+		    
+		    
+		    // Prune pero ya!
+		    list<coordenadas_t> camino_simplificado;
+		    camino_simplificado.push_back(camino_recorrido.front());
+		    
+		    if (tamanio_camino > 2) {
+		      list<coordenadas_t>::iterator it1, it2, it3;
+		      it1 = it2 = it3 = camino_recorrido.begin();
+		      it2++; it3++; it3++;
+		      for (;
+			   it3 != camino_recorrido.end();
+			   it1++, it2++, it3++)
+			{
+			  if (pendiente(*it1,*it2) != pendiente(*it2,*it3)) camino_simplificado.push_back(*it2);
+			}
+		    }
+		    camino_simplificado.push_back(camino_recorrido.back());
+		    
+		    // Pintar todo el camino
+		    cout << "\nCAMINO RECORRIDO\n";
+		    copy(camino_recorrido.begin(), 
+			 camino_recorrido.end(), 
+			 ostream_iterator<coordenadas_t>(cout, "\n"));
+		    
+		    cout << "\nCAMINO SIMPLIFICADO\n";
+		    copy(camino_simplificado.begin(), 
+			 camino_simplificado.end(), 
+			 ostream_iterator<coordenadas_t>(cout, "\n"));
+#endif
+
+    return costefinal;
+}
+
+
+// Calcula la distancia minima entre dos secuencias
+// utilizando el algoritmo EDR (Edit Distance on Real Sequences)
+//
+// Ver artículo: Lei Chen, Tamer Ozsu, Vincent Oria; "Robust and Fast 
+//               Similarity Search for Moving Object Trajectories".
+//
+// Objeto: Puede ser una CELDA, un par de CELDAS, etc.
+// Distancia: Tipo de la clasecilla que se usa para obtener las distancias
+// patron: lo que su nombre indica.
+// secuencia: lo que su nombre indica.
+// umbral_matching: valor de distancia por debajo del cual se considera que hay matching
+// dist: Objeto que se usa para calcular distancias
+template<
+  typename Objeto,
+  typename Distancia
+  >
+double DistanciaSecuenciasEDR(const std::vector<Objeto>& patron,
+			      const std::vector<Objeto>& secuencia,
+			      double umbral_matching,
+			      Distancia& distancia)
+{  
+  std::vector<std::vector<double> > coste;
+
+  double dist_final;
+
+  int N = patron.size();
+  int M = secuencia.size();
+
+  // Caso en el que alguno de los dos es 0
+  if (N==0) return M;
+  if (M==0) return N;
+
+  // Si ninguno de los dos es 0 se ejecuta la recursividad
+
+  // Construye la matriz de costes (por ahora vacía). costes[j][i]
+  // filas (j... de 0 a M-1)
+  coste.resize(M);
+  // columnas (i... de 0 a N-1)
+  for (int i=0; i<M; i++) 
+      coste.at(i).resize(N);
+
+  // Recursión
+  // Inicializa la primera fila a 0...N-1
+  for (unsigned int j=0; j<coste.at(0).size(); j++)
+    coste.at(0).at(j) = j;
+  // Inicializa la primera columna a 0...M-1
+  for (unsigned int i=0; i<coste.size(); i++)
+    coste.at(i).at(0) = i;
+  // Bucle que implementa la recursividad
+  for (unsigned int i=1; i<coste.size(); i++)
+    for (unsigned int j=1; j<coste.at(i).size(); j++)
+      {
+	// Matching de las posiciones analizadas
+	double dist = distancia(secuencia.at(i), patron.at(j));
+	double pesomatch;
+	if (dist>=umbral_matching) pesomatch = 1.0;
+	else pesomatch = 0.0;
+
+	// Mínimo de tres valores
+	double costeatij = coste.at(i-1).at(j)+1.0; // insert
+	if ( coste.at(i).at(j-1)+1.0 < costeatij ) 
+	  costeatij = coste.at(i).at(j-1)+1.0; // delete
+	if ( coste.at(i-1).at(j-1)+pesomatch < costeatij )
+	  costeatij = coste.at(i-1).at(j-1)+pesomatch; // replace
+
+	coste.at(i).at(j) = costeatij;
+      }
+
+  //cout<<"Matriz: "<<endl;
+  //for (int j=0;j<coste.size();j++) {
+  //  for (int i=0;i<coste.at(0).size();i++)
+  //    cout<<coste.at(j).at(i)<<" ";
+  //  cout<<endl;
+  //}
+
+  // Al final de la ejecución, el coste está en la esquina inferior derecha de la matriz
+  dist_final = coste.back().back();
+
+  return dist_final;
+}
+
+// Calcula la distancia minima entre dos secuencias
+// utilizando el algoritmo ERP (Edit Distance with Real Penalty)
+//
+// Ver artículo: Lei Chen, Tamer Ozsu, Vincent Oria; "Robust and Fast 
+//               Similarity Search for Moving Object Trajectories".
+// Ver artículo: L. Chen, R. Ng; "On the marriage
+//               of edit distance and Lp norms".
+//
+// Objeto: Puede ser una CELDA, un par de CELDAS, etc.
+// Distancia: Tipo de la clasecilla que se usa para obtener las distancias
+// patron: lo que su nombre indica.
+// secuencia: lo que su nombre indica.
+// hueco: Llamado 'g' en los artículos. La penalización por insertar o borrar un valor es su distancia al hueco.
+// dist: Objeto que se usa para calcular distancias
+template<
+  typename Objeto,
+  typename Distancia
+  >
+double DistanciaSecuenciasERP(const std::vector<Objeto>& patron,
+			      const std::vector<Objeto>& secuencia,
+			      Objeto hueco,
+			      Distancia& distancia)
+{
+  std::vector<std::vector<double> > coste;
+
+  double dist_final;
+
+  int N = patron.size();
+  int M = secuencia.size();
+
+  // Caso en el que alguno de los dos es 0
+  if (N==0) return M;
+  if (M==0) return N;
+
+  // Si ninguno de los dos es 0 se ejecuta la recursividad
+
+  // Construye la matriz de costes (por ahora vacía). costes[j][i]
+  // filas (j... de 0 a M-1)
+  coste.resize(M);
+  // columnas (i... de 0 a N-1)
+  for (int i=0; i<M; i++) 
+      coste.at(i).resize(N);
+
+  // Recursión
+  // Inicializa la primera fila a 0...N-1
+  for (unsigned int j=0; j<coste.at(0).size(); j++)
+    coste.at(0).at(j) = j;
+  // Inicializa la primera columna a 0...M-1
+  for (unsigned int i=0; i<coste.size(); i++)
+    coste.at(i).at(0) = i;
+  // Bucle que implementa la recursividad
+  for (unsigned int i=1; i<coste.size(); i++)
+    for (unsigned int j=1; j<coste.at(i).size(); j++)
+      {
+	// Matching de las posiciones analizadas
+	double dist = distancia(secuencia.at(i), patron.at(j));
+
+	// Mínimo de tres valores
+	double costeatij = coste.at(i-1).at(j)+distancia(secuencia.at(i),hueco); // insert
+	if ( coste.at(i).at(j-1)+distancia(patron.at(j),hueco) < costeatij ) 
+	  costeatij = coste.at(i).at(j-1)+distancia(patron.at(j),hueco); // delete
+	if ( coste.at(i-1).at(j-1)+dist < costeatij )
+	  costeatij = coste.at(i-1).at(j-1)+dist; // replace
+
+	coste.at(i).at(j) = costeatij;
+      }
+
+  //cout<<"Matriz: "<<endl;
+  //for (int j=0;j<coste.size();j++) {
+  //  for (int i=0;i<coste.at(0).size();i++)
+  //    cout<<coste.at(j).at(i)<<" ";
+  //  cout<<endl;
+  //}
+
+  // Al final de la ejecución, el coste está en la esquina inferior derecha de la matriz
+  dist_final = coste.back().back();
+
+  return dist_final;
+}
+
+// Calcula la distancia minima entre dos secuencias
+// utilizando el algoritmo LCSS (Longest Common Subsequence)
+//
+// Ver artículo: Lei Chen, Tamer Ozsu, Vincent Oria; "Robust and Fast 
+//               Similarity Search for Moving Object Trajectories".
+//
+// Objeto: Puede ser una CELDA, un par de CELDAS, etc.
+// Distancia: Tipo de la clasecilla que se usa para obtener las distancias
+// patron: lo que su nombre indica.
+// secuencia: lo que su nombre indica.
+// umbral_matching: valor de distancia por debajo del cual se considera que hay matching
+// dist: Objeto que se usa para calcular distancias
+template<
+  typename Objeto,
+  typename Distancia
+  >
+double DistanciaSecuenciasLCSS(const std::vector<Objeto>& patron,
+			      const std::vector<Objeto>& secuencia,
+			      double umbral_matching,
+			      Distancia& distancia)
+{
+
+  unsigned int i, j;
+  
+  unsigned int n = patron.size();
+  unsigned int m = secuencia.size();
+  
+  if(n == 0 || m == 0) {
+    return -1;
+  }
+  
+  vector< vector<int> > matrix(n + 2);
+  
+  for(i = 0; i <= n+1; i++) {
+    matrix[i].resize(m + 2);
+  }
+  
+  for(i = 0; i <= n+1; i++) {
+    matrix[i][0] = i;
+  }
+  
+  for(j = 0; j <= m+1; j++) {
+    matrix[0][j] = j;
+  }
+  
+  for(i = n+1; i >= 1; i--) {
+    for(j = m+1; j >= 1; j--) {
+      //                      wcout << L"n: " << n+1 << L" m: " << m+1 << L" i: " << i << L" j: " << j << endl;
+      if (i == n+1 || j == m+1) {
+	matrix[i][j] = 0;
+      } else if ( distancia(patron.at(i-1),secuencia.at(j-1))<umbral_matching ) {
+	matrix[i][j] = 1 + matrix[i + 1][j + 1];
+      } else {
+	matrix[i][j] = max(matrix[i + 1][j], matrix[i][j + 1]);
+      }
+    }
+  }
+  return (double)(matrix[1][1]);
+  
+}
+
+
+
+#endif

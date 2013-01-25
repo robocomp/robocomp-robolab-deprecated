@@ -1,0 +1,64 @@
+#
+# This property is used to configure the endpoints of the subscriber adapter.
+#
+CameraBus.Endpoints=tcp -p 10101
+CommonBehavior.Endpoints=tcp -p 11101
+
+# Remote servers proxies example
+# RemoteProxy = remote:tcp -h remotehost -p 10001
+JointMotorProxy=jointmotor:tcp -p 10067
+DifferentialRobotProxy=differentialrobot:tcp -p 10004
+
+
+#
+###  Configuration variables and optional values
+###
+### V4linux.captureMode		: YUV422Mode (default)
+### V4linux.Device 			: /dev/video0 (default), /dev/video1
+### V4linux.Focal			: in pixels, default 480
+### V4linux.NumCameras 		: Default 1. 2 for stereo heads
+### V4linux.FPS				: Default 15.
+### V4linux.Width			: Default 320.
+### V4linux.Height			: Default 240.
+### V4linux.TalkToBase 		: Default false
+### V4linux.TalkToCommonHead : Default false
+
+#V4linux.Params = Name,BusId,InvertedH,InvertedV,FocalX,FocalY,Saturation,LineFreq
+V4linux.Params_0 = camera1,1,false,false,420,420,50,50
+V4linux.Params_1 = camera2,2,false,false,420,420,50,50
+
+#############################
+# Some usual configurations #
+#############################
+
+#
+# Integrated laptop USB webcam or similar
+#
+V4linux.Device = /dev/video0
+V4linux.captureMode = YUV422Mode
+V4linux.Width = 640
+V4linux.Height = 480
+V4linux.FPS = 15
+V4linux.NumCameras = 1
+V4linux.TalkToBase = false
+V4linux.TalkToCommonHead = false
+
+
+
+# User config parameters
+# Example = value
+
+#############################
+### Ice-related properties ##
+#############################
+# Warn about connection exceptions
+Ice.Warn.Connections=0
+# Network Tracing: (0: no network tracing; 1: trace connection establishment and closure; 2: like 1, but more detailed; 3: like 2, but also trace data transfer).
+Ice.Trace.Network=0
+# Protocol Tracing: (0: no protocol tracing; 1: trace protocol messages)
+Ice.Trace.Protocol=0
+
+# Faster ACM
+Ice.MessageSizeMax=10240
+Ice.ACM.Client=10
+Ice.ACM.Server=10

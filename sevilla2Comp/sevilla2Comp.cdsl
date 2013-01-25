@@ -1,0 +1,22 @@
+import "/robocomp/Interfaces/IDSLs/Juego.idsl";
+import "/robocomp/Interfaces/IDSLs/Sevilla2.idsl";
+import "/robocomp/Interfaces/IDSLs/Speech.idsl";
+import "/robocomp/Interfaces/IDSLs/UrsusArm.idsl";
+
+Component sevilla2Comp{
+	Communications{
+		requires Juego,Speech,UrsusArm;
+	};
+	RoboCompClasses		
+	{ 
+		"/Classes/rcdraw/rcdraw.cpp";
+		"/Classes/rcdraw/rcdraw.h";
+		
+	};
+	RoboCompModules{
+		 ipp;
+		 qmat;
+	};
+	language Cpp;	
+	gui Qt;
+};

@@ -1,0 +1,15 @@
+import "/robocomp/Interfaces/IDSLs/Laser.idsl";
+import "/robocomp/Interfaces/IDSLs/DifferentialRobot.idsl";
+
+Component sickLDComp{
+	Communications{
+		implements Laser;
+		requires DifferentialRobot;
+	};
+	
+	RoboCompModules{
+		sick;
+	};
+	language Cpp;	
+	worker isThread;
+};
